@@ -1,9 +1,8 @@
 .profile__add-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 50px;
   padding: 14px 64px;
   background-color: #000000;
   border: 2px solid #FFFFFF;
+  box-sizing: border-box;
+  margin-left: 20px;
+  font-size: 0;
 }
