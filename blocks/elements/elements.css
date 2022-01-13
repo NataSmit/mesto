@@ -1,0 +1,10 @@
+.elements {
+  max-width: 880px;
+  padding: 51px 0 0 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 17px; 
+  grid-template-rows: auto;
+  grid-auto-columns: auto;
+  row-gap: 20px;
+}

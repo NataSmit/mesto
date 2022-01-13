@@ -14,3 +14,10 @@
 @import url(../blocks/profile/__container/profile__container.css);
 @import url(../blocks/profile/__body/profile__body.css);
 @import url(../blocks/profile/__details/profile__details.css);
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/element/element.css);
+@import url(../blocks/element/__icon/element__icon.css);
+@import url(../blocks/element/__name/element__name.css);
+@import url(../blocks/element/__photo/element__photo.css);
+@import url(../blocks/element/__subtitle/element__subtitle.css);
+@import url(../blocks/element/__photo-img/element__photo-img.css);
