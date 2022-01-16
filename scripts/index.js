@@ -26,13 +26,16 @@ let nameInput = document.querySelector('.popup__form-name');
 
 let jobInput =document.querySelector('.popup__form-activity');
 
+const profileName = document.querySelector('.profile__name');
+
+const profileProfession = document.querySelector('.profile__profession');
 
 function formSubmitHandler (evt) {
   evt.preventDefault();
   let nameValue = nameInput.getAttribute('value');
   let jobValue = jobInput.getAttribute('value');
-  nameInput.textContent = nameValue;
-  jobInput.textContent = jobValue;
+  profileName.textContent = nameValue;
+  profileProfession.textContent = jobValue;
   closeButtonClick()
 }
 
