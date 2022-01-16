@@ -3,8 +3,21 @@
   align-items: center;
   justify-content: center;
   border: 1px solid #FFFFFF;
-  padding: 7px;
+  padding: 6px;
   background-color: #000000;
   margin: 0 0 0 18px;
   align-self: center;
+}
+
+.profile__edit-button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.3s;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__edit-button {
+    padding: 4.25px;
+    margin: 0 0 0 10px;
+  }
 }

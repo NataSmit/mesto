@@ -3,3 +3,9 @@
   border-radius: 10px;
   overflow: hidden;
 }
+
+@media screen and (max-width: 765px) {
+  .element {
+    justify-self: center;
+  }
+}

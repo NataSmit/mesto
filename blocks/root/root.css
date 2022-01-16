@@ -6,4 +6,11 @@
   margin: 0 auto;
   padding: 45px 200px 60px;
   box-sizing: border-box;
+  height: 100%;
+}
+
+@media screen and (max-width: 767px) {
+  .root {
+    padding: 28px 0px 36px;
+  }
 }
