@@ -1,9 +1,9 @@
 .element__icon {
   margin: 0 5px 0 15px;
+  transition: opacity 0.3s;
 }
 
 .element__icon:hover {
   cursor: pointer;
   opacity: 0.5;
-  transition: opacity 0.3s;
 }

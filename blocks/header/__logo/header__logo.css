@@ -1,11 +1,11 @@
 .header__logo {
   max-width: 142px;
+  transition: opacity 0.3s;
 }
 
 .header__logo:hover {
   cursor: pointer;
   opacity: 0.5;
-  transition: opacity 0.3s;
 }
 
 

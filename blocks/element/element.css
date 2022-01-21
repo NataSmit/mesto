@@ -2,6 +2,8 @@
   max-width: 282px;
   border-radius: 10px;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 @media screen and (max-width: 765px) {

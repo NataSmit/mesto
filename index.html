@@ -9,9 +9,7 @@
 <body class="wrapper">
   <div class="root">
     <header class="header">
-      <div class="header__logo">
-        <a href="#"><img class="header__logo-image" src="./images/logo.svg" alt="Логотип Место"></a>
-      </div>
+        <a href="#"><img class="header__logo" src="./images/logo.svg" alt="Логотип Место"></a>
     </header>
 
     <main class="content">
@@ -23,103 +21,103 @@
           <div class="profile__details">
             <div class="profile__container">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
-              <button type="button" class="profile__edit-button">               
+              <button type="button" class="profile__edit-button" aria-label="Редактировать" >               
                 <img class="profile__button-item" src="./images/pen.svg" alt="Редактировать">             
               </button>
             </div>
             <p class="profile__profession">Исследователь океана</p>
           </div>
         </div>       
-        <button type="button" class="profile__add-button">
+        <button type="button" class="profile__add-button" aria-label="Добавить">
           <img class="profile__add-image" src="./images/plus.svg" alt="Добавить">
         </button>
       </section>
       <section class="elements">
-        <div class="elements__card element">
+        <article class="elements__card element">
           <div class="element__photo">
             <img class="element__photo-img" src="./images/Karachaevsk.jpg" alt="Карачаевск">
           </div>
           <div class="element__subtitle">
-            <p class="element__name">Карачаевск</p>
+            <h2 class="element__name">Карачаевск</h2>
             <div class="element__icon">
               <img src="./images/heart_white.svg" alt="Нравится">
             </div>
           </div>
-        </div>
-        <div class="elements__card element">
+        </article>
+        <article class="elements__card element">
           <div class="element__photo">
             <img class="element__photo-img" src="./images/Elbrus.png" alt="Эльбрус">
           </div>
           <div class="element__subtitle">
-            <p class="element__name">Гора Эльбрус</p>
+            <h2 class="element__name">Гора Эльбрус</h2>
             <div class="element__icon">
               <img src="./images/heart_white.svg" alt="Нравится">
             </div>
           </div>
-        </div>
-        <div class="elements__card element">
+        </article>
+        <article class="elements__card element">
           <div class="element__photo">
             <img class="element__photo-img" src="./images/domb.png" alt="Домбай">
           </div>
           <div class="element__subtitle">
-            <p class="element__name">Домбай</p>
+            <h2 class="element__name">Домбай</h2>
             <div class="element__icon">
               <img src="./images/heart_white.svg" alt="Нравится">
             </div>
           </div>
-        </div>
-        <div class="elements__card element">
+        </article>
+        <article class="elements__card element">
           <div class="element__photo">
             <img class="element__photo-img" src="./images/Elbrus.png" alt="Гора Эльбрус">
           </div>
           <div class="element__subtitle">
-            <p class="element__name">Гора Эльбрус</p>
+            <h2 class="element__name">Гора Эльбрус</h2>
             <div class="element__icon">
               <img src="./images/heart_white.svg" alt="Нравится">
             </div>
           </div>
-        </div>
-        <div class="elements__card element">
+        </article>
+        <article class="elements__card element">
           <div class="element__photo">
             <img class="element__photo-img" src="./images/domb.png" alt="Домбай">
           </div>
           <div class="element__subtitle">
-            <p class="element__name">Домбай</p>
+            <h2 class="element__name">Домбай</h2>
             <div class="element__icon">
               <img src="./images/heart_white.svg" alt="Нравится">
             </div>
           </div>
-        </div>
-        <div class="elements__card element">
+        </article>
+        <article class="elements__card element">
           <div class="element__photo">
             <img class="element__photo-img" src="./images/Karachaevsk.jpg" alt="Карачаево-Черкесия">
           </div>
           <div class="element__subtitle">
-            <p class="element__name">Карачаево-Черкесия</p>
+            <h2 class="element__name">Карачаево-Черкесия</h2>
             <div class="element__icon">
               <img src="./images/heart_white.svg" alt="Нравится">
             </div>
           </div>
-        </div>
+        </article>
       </section>
-      <div class="popup">
-        <div class="popup__container">
-          <p class="popup__title">Редактировать профиль</p>
-          <form class="popup__form" action="/" name="popup__submit-form">
-            <input class="popup__form-name" type="text" name="popup__name-input" value="Жак-Ив Кусто">
-            <input class="popup__form-activity" type="text" name="popup__activity-input" value="Исследователь океана">
-            <button class="popup__submit-btn" type="submit">Сохранить</button>
-            <button type="button" class="popup__close-button">
-              <img class="popup__close-icon" src="./images/Close-Icon.svg" alt="Закрыть">
-            </button>
-          </form>
-        </div>
-      </div>
     </main>
 
     <footer class="footer root__footer">
       <p  class="footer__copyright">&copy;2020 Mesto Russia</p>
     </footer>
+  </div>
+  <div class="popup">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" action="/" name="popup-form">
+        <input class="popup__form-input popup__form-input_type_name" type="text" name="popup-name" value="">
+        <input class="popup__form-input popup__form-input_type_activity" type="text" name="popup-activity" value="">
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button" aria-label="Закрыть">
+        <img class="popup__close-icon" src="./images/Close-Icon.svg" alt="Закрыть">
+      </button>
+    </div>
   </div>
 <script src="./scripts/index.js"></script>
 </body>
