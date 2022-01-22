@@ -1,6 +1,9 @@
 .element__icon {
   margin: 0 5px 0 15px;
   transition: opacity 0.3s;
+  background-color: transparent;
+  border: none;
+  padding: 0;
 }
 
 .element__icon:hover {

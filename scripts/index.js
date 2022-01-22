@@ -19,8 +19,8 @@ let jobInput = document.querySelector('.popup__form-input_type_activity');
 
 function editButtonClick() {
   blockPopup.classList.add('popup_opened');
-  nameInput.setAttribute('value', profileName);
-  jobInput.setAttribute('value', profileProfession);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProfession.textContent;
 }
 
 function closeButtonClick() {
