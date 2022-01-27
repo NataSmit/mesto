@@ -33,15 +33,13 @@
         </button>
       </section>
       <section class="elements">
-        <article class="elements__card element">
+       <!-- <article class="elements__card element">
           <div class="element__photo">
             <img class="element__photo-img" src="./images/Karachaevsk.jpg" alt="Карачаевск">
           </div>
           <div class="element__subtitle">
             <h2 class="element__name">Карачаевск</h2>
-            <button class="element__icon" type="button" aria-label="Нравится">
-              <img src="./images/heart_white.svg" alt="Нравится">
-            </button>
+            <button class="element__icon" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__card element">
@@ -50,9 +48,7 @@
           </div>
           <div class="element__subtitle">
             <h2 class="element__name">Гора Эльбрус</h2>
-            <button class="element__icon" type="button" aria-label="Нравится">
-              <img src="./images/heart_white.svg" alt="Нравится">
-            </button>
+            <button class="element__icon" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__card element">
@@ -61,9 +57,7 @@
           </div>
           <div class="element__subtitle">
             <h2 class="element__name">Домбай</h2>
-            <button class="element__icon" type="button" aria-label="Нравится">
-              <img src="./images/heart_white.svg" alt="Нравится">
-            </button>
+            <button class="element__icon" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__card element">
@@ -72,9 +66,7 @@
           </div>
           <div class="element__subtitle">
             <h2 class="element__name">Гора Эльбрус</h2>
-            <button class="element__icon" type="button" aria-label="Нравится">
-              <img src="./images/heart_white.svg" alt="Нравится">
-            </button>
+            <button class="element__icon" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__card element">
@@ -83,9 +75,7 @@
           </div>
           <div class="element__subtitle">
             <h2 class="element__name">Домбай</h2>
-            <button class="element__icon" type="button" aria-label="Нравится">
-              <img src="./images/heart_white.svg" alt="Нравится">
-            </button>
+            <button class="element__icon" type="button" aria-label="Нравится"></button>
           </div>
         </article>
         <article class="elements__card element">
@@ -94,11 +84,9 @@
           </div>
           <div class="element__subtitle">
             <h2 class="element__name">Карачаево-Черкесия</h2>
-            <button class="element__icon" type="button" aria-label="Нравится">
-              <img src="./images/heart_white.svg" alt="Нравится">
-            </button>
+            <button class="element__icon" type="button" aria-label="Нравится"></button>
           </div>
-        </article>
+        </article>-->
       </section>
     </main>
 
@@ -119,6 +107,30 @@
       </button>
     </div>
   </div>
+  <div class="popup popup_tipe_card">
+    <div class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form" action="/" name="popup-form">
+        <input class="popup__form-input popup__form-input_type_card-name" type="text" name="popup-name" placeholder="Название" value="">
+        <input class="popup__form-input popup__form-input_type_card-link" type="text" name="popup-activity" placeholder="Ссылка на картинку" value="">
+        <button class="popup__submit-btn" type="submit">Создать</button>
+      </form>
+      <button type="button" class="popup__close-button popup__close-button_type_card " aria-label="Закрыть">
+        <img class="popup__close-icon" src="./images/Close-Icon.svg" alt="Закрыть">
+      </button>
+    </div>
+  </div>
+  <template class="card-template">
+    <article class="elements__card element">
+      <div class="element__photo">
+        <img class="element__photo-img" src="" alt="">
+      </div>
+      <div class="element__subtitle">
+        <h2 class="element__name"></h2>
+        <button class="element__icon" type="button" aria-label="Нравится"></button>
+      </div>
+    </article>
+  </template>
 <script src="./scripts/index.js"></script>
 </body>
 </html>

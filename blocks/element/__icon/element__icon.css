@@ -4,7 +4,15 @@
   background-color: transparent;
   border: none;
   padding: 0;
+  background-image: url('../../../images/heart_white.svg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-width: 22px;
+  height: 19px;
 }
+
+
 
 .element__icon:hover {
   cursor: pointer;

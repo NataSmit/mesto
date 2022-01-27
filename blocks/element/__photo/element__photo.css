@@ -1,6 +1,6 @@
 .element__photo {
   font-size: 0;
-  object-fit: contain;
-  object-position: center;
+  
   flex: 1 1 auto;
+  
 }
