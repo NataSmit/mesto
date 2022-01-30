@@ -39,6 +39,7 @@
 @import url(../blocks/content/content.css);
 @import url(../blocks/popup-view-image/popup-view-image.css);
 @import url(../blocks/popup-view-image/__close-button/popup-view-image__close-button.css);
+@import url(../blocks/popup-view-image/__close-icon/popup-view-image__close-icon.css);
 @import url(../blocks/popup-view-image/__figure/popup-view-image__figure.css);
 @import url(../blocks/popup-view-image/__photo-item/popup-view-image__photo-item.css);
 @import url(../blocks/popup-view-image/__subtitle/popup-view-image__subtitle.css);
