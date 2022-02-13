@@ -10,3 +10,9 @@
 .popup__input-error:last-of-type {
   margin-bottom: 40px;
 }
+
+@media screen and (max-width: 900px) {
+  .popup__input-error:last-of-type {
+    margin: 0 0 45px 0;
+  }
+}
