@@ -47,12 +47,17 @@ const nameInput = document.querySelector('.popup__form-input_type_name');
 const jobInput = document.querySelector('.popup__form-input_type_activity');
 
 
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  popup.addEventListener('click', closePopupOnOverlay);
+  wrapper.addEventListener('keydown', closePopupOnEsc);
 } 
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', closePopupOnOverlay);
+  wrapper.removeEventListener('keydown', closePopupOnEsc);
 } 
 
 
@@ -93,6 +98,9 @@ const popupViewImage = document.querySelector('.popup-view-image');
 const popupViewImageCloseButton = document.querySelector('.popup-view-image__close-button');
 const popupViewImagePhoto = document.querySelector('.popup-view-image__photo-item');
 const popupViewImagePhotoSubtitle = document.querySelector('.popup-view-image__subtitle');
+const popups = Array.from(document.querySelectorAll('.popup'));
+const wrapper = document.querySelector('.wrapper')
+
 
 
 function createCard(item) {
@@ -131,15 +139,10 @@ function deliteCard (event) {
 };
 
 function openCardFullScreen (event) {
-  popupViewImage.classList.toggle('popup-view-image__opened');
-  popupViewImagePhoto.src = event.target.src
-  popupViewImagePhotoSubtitle.textContent = event.target.alt
-  popupViewImagePhoto.alt = event.target.alt
-}
-
-
-function closeBlockPopupViewImage() {
-  popupViewImage.classList.toggle('popup-view-image__opened');
+  openPopup(popupViewImage);
+  popupViewImagePhoto.src = event.target.src;
+  popupViewImagePhotoSubtitle.textContent = event.target.alt;
+  popupViewImagePhoto.alt = event.target.alt;
 }
 
 
@@ -152,6 +155,19 @@ function addCard (evt) {
   const newUserCard = createCard(newObj)
   renderCard(newUserCard, sectionElements);
   closePopup(popupAddCard);
+}
+
+function closePopupOnOverlay(evt) {                                // ПР6
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+}
+
+function closePopupOnEsc (evt) {                                   // ПР6
+  const popupActive = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(popupActive);
+  }
 }
 
 
@@ -167,7 +183,9 @@ popupCardCloseButton.addEventListener('click', function(){
   closePopup(popupAddCard);
 });
 
-popupViewImageCloseButton.addEventListener('click', closeBlockPopupViewImage);
+popupViewImageCloseButton.addEventListener('click', function(){
+  closePopup(popupViewImage);
+});
 
 render();
 
