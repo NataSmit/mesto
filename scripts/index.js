@@ -59,12 +59,11 @@ const popups = Array.from(document.querySelectorAll('.popup'));
 const wrapper = document.querySelector('.wrapper');
 const formTypeCard = document.querySelector('.popup__form_tipe_card');
 
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  
   popup.addEventListener('click', closePopupOnOverlay);
   wrapper.addEventListener('keydown', closePopupOnEsc);
+
 } 
 
 function closePopup(popup) {
@@ -150,7 +149,11 @@ profileEditButton.addEventListener('click', function(){
 });
 
 popupCloseButton.addEventListener('click', function(){
-  closePopup(blockPopup)
+  closePopup(blockPopup);
+  const inputElements = blockPopup.querySelectorAll('.popup__form-input'); // Очистка ошибок
+  inputElements.forEach((inputElement) =>{
+    hideInputError(config, blockPopup, inputElement);
+  })
 });
 
 formProfile.addEventListener('submit', submitProfileForm); 
@@ -168,6 +171,11 @@ cardAddButton.addEventListener('click', function(){
 
 popupCardCloseButton.addEventListener('click', function(){
   closePopup(popupAddCard);
+  const inputElements = popupAddCard.querySelectorAll('.popup__form-input'); // Очистка ошибок
+  inputElements.forEach((inputElement) =>{
+    hideInputError(config, popupAddCard, inputElement);
+  })
+  
 });
 
 popupViewImageCloseButton.addEventListener('click', function(){
