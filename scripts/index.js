@@ -50,6 +50,7 @@ const jobInput = document.querySelector('.popup__form-input_type_activity');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  
   popup.addEventListener('click', closePopupOnOverlay);
   wrapper.addEventListener('keydown', closePopupOnEsc);
 } 
@@ -170,6 +171,12 @@ function closePopupOnEsc (evt) {                                   // ПР6
   }
 }
 
+function test(config, inputList, buttonElement) {
+  
+  openPopup(popupViewImage);
+  toggleButtonState(config, inputList, buttonElement)
+  console.log (toggleButtonState(config, inputList, buttonElement))
+}
 
 popupAddCard.addEventListener('submit', addCard);
 
@@ -177,6 +184,9 @@ cardAddButton.addEventListener('click', function(){
   openPopup(popupAddCard);
   popupCardNameInput.value = '';
   popupCardLinkInput.value = '';
+  const inputList = Array.from(popupAddCard.querySelectorAll(config.inputSelector));
+  const buttonElement = popupAddCard.querySelector(config.submitButtonSelector);
+  toggleButtonState(config, inputList, buttonElement)
 });
 
 popupCardCloseButton.addEventListener('click', function(){

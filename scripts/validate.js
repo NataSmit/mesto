@@ -56,9 +56,7 @@ function enableValidation(config) {
       evt.preventDefault();
       
     });
-
     setEventListeners(config, formElement);
-
   })
 }
 
