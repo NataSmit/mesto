@@ -1,5 +1,3 @@
-// Проектная работа 4
-
 const initialCards = [
   {
     name: 'Архыз',
@@ -46,6 +44,20 @@ const nameInput = document.querySelector('.popup__form-input_type_name');
 
 const jobInput = document.querySelector('.popup__form-input_type_activity');
 
+const cardTemplate = document.querySelector('.card-template').content;
+const sectionElements = document.querySelector('.elements');
+const cardAddButton = document.querySelector ('.profile__add-button');
+const popupAddCard = document.querySelector('.popup_tipe_card');
+const popupCardCloseButton = document.querySelector('.popup__close-button_type_card');
+const popupCardNameInput = document.querySelector('.popup__form-input_type_card-name');
+const popupCardLinkInput = document.querySelector('.popup__form-input_type_card-link');
+const popupViewImage = document.querySelector('.popup-view-image');
+const popupViewImageCloseButton = document.querySelector('.popup-view-image__close-button');
+const popupViewImagePhoto = document.querySelector('.popup-view-image__photo-item');
+const popupViewImagePhotoSubtitle = document.querySelector('.popup-view-image__subtitle');
+const popups = Array.from(document.querySelectorAll('.popup'));
+const wrapper = document.querySelector('.wrapper');
+const formTypeCard = document.querySelector('.popup__form_tipe_card');
 
 
 function openPopup(popup) {
@@ -61,6 +73,18 @@ function closePopup(popup) {
   wrapper.removeEventListener('keydown', closePopupOnEsc);
 } 
 
+function closePopupOnOverlay(evt) {                                // ПР6
+  if (evt.target === evt.currentTarget) {
+    closePopup(evt.target);
+  }
+}
+
+function closePopupOnEsc (evt) {                                   // ПР6
+  const popupActive = document.querySelector('.popup_opened');
+  if (evt.key === 'Escape') {
+    closePopup(popupActive);
+  }
+}
 
 function submitProfileForm (evt) {             //Редактирование данных профайла
   evt.preventDefault();
@@ -72,38 +96,6 @@ function submitProfileForm (evt) {             //Редактирование д
 }
 
 
-profileEditButton.addEventListener('click', function(){
-  openPopup(blockPopup);
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileProfession.textContent;
-});
-
-popupCloseButton.addEventListener('click', function(){
-  closePopup(blockPopup)
-});
-
-formProfile.addEventListener('submit', submitProfileForm); 
-
-
-// Проектная работа 5
-
-
-const cardTemplate = document.querySelector('.card-template').content;
-const sectionElements = document.querySelector('.elements');
-const cardAddButton = document.querySelector ('.profile__add-button');
-const popupAddCard = document.querySelector('.popup_tipe_card');
-const popupCardCloseButton = document.querySelector('.popup__close-button_type_card');
-const popupCardNameInput = document.querySelector('.popup__form-input_type_card-name');
-const popupCardLinkInput = document.querySelector('.popup__form-input_type_card-link');
-const popupViewImage = document.querySelector('.popup-view-image');
-const popupViewImageCloseButton = document.querySelector('.popup-view-image__close-button');
-const popupViewImagePhoto = document.querySelector('.popup-view-image__photo-item');
-const popupViewImagePhotoSubtitle = document.querySelector('.popup-view-image__subtitle');
-const popups = Array.from(document.querySelectorAll('.popup'));
-const wrapper = document.querySelector('.wrapper')
-
-
-
 function createCard(item) {
   const cardElement = cardTemplate.cloneNode(true);                        
   cardElement.querySelector('.element__name').textContent = item.name;
@@ -113,23 +105,13 @@ function createCard(item) {
   return cardElement;
 } 
 
-function renderCard(card, wrap) {                 //Добавление карточки в контейнер
-  wrap.prepend(card);
-} 
-
-
-function render() {                                  //Перебор массива карточек с созданием и добавлением на стр   
-  initialCards.reverse().forEach(function(el){
-    const newCard = createCard(el);
-    renderCard(newCard, sectionElements);
-  });
-}
 
 function addListeners (el) {
   el.querySelector('.element__icon').addEventListener('click', setLike);
   el.querySelector('.element__delete-button').addEventListener('click', deliteCard);
   el.querySelector('.element__photo-img').addEventListener('click', openCardFullScreen);
 }
+
 
 function setLike (event) {
   event.target.classList.toggle('element__icon_state_active');
@@ -138,6 +120,7 @@ function setLike (event) {
 function deliteCard (event) {
   event.target.closest('.element').remove();
 };
+
 
 function openCardFullScreen (event) {
   openPopup(popupViewImage);
@@ -158,32 +141,26 @@ function addCard (evt) {
   closePopup(popupAddCard);
 }
 
-function closePopupOnOverlay(evt) {                                // ПР6
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.target);
-  }
-}
 
-function closePopupOnEsc (evt) {                                   // ПР6
-  const popupActive = document.querySelector('.popup_opened');
-  if (evt.key === 'Escape') {
-    closePopup(popupActive);
-  }
-}
 
-function test(config, inputList, buttonElement) {
-  
-  openPopup(popupViewImage);
-  toggleButtonState(config, inputList, buttonElement)
-  console.log (toggleButtonState(config, inputList, buttonElement))
-}
+profileEditButton.addEventListener('click', function(){
+  openPopup(blockPopup);
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProfession.textContent;
+});
+
+popupCloseButton.addEventListener('click', function(){
+  closePopup(blockPopup)
+});
+
+formProfile.addEventListener('submit', submitProfileForm); 
+
 
 popupAddCard.addEventListener('submit', addCard);
 
 cardAddButton.addEventListener('click', function(){
   openPopup(popupAddCard);
-  popupCardNameInput.value = '';
-  popupCardLinkInput.value = '';
+  formTypeCard.reset();
   const inputList = Array.from(popupAddCard.querySelectorAll(config.inputSelector));
   const buttonElement = popupAddCard.querySelector(config.submitButtonSelector);
   toggleButtonState(config, inputList, buttonElement)
@@ -196,6 +173,20 @@ popupCardCloseButton.addEventListener('click', function(){
 popupViewImageCloseButton.addEventListener('click', function(){
   closePopup(popupViewImage);
 });
+
+
+function renderCard(card, wrap) {                 //Добавление карточки в контейнер
+  wrap.prepend(card);
+} 
+
+
+function render() {                                  //Перебор массива карточек с созданием и добавлением на стр   
+  initialCards.reverse().forEach(function(el){
+    const newCard = createCard(el);
+    renderCard(newCard, sectionElements);
+  });
+}
+
 
 render();
 
