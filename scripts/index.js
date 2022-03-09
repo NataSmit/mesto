@@ -1,3 +1,5 @@
+import { FormValidator } from './validate.js';
+
 const initialCards = [
   {
     name: 'Архыз',
@@ -58,6 +60,22 @@ const popupViewImagePhotoSubtitle = document.querySelector('.popup-view-image__s
 const popups = Array.from(document.querySelectorAll('.popup'));
 const wrapper = document.querySelector('.wrapper');
 const formTypeCard = document.querySelector('.popup__form_tipe_card');
+const config = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__form-input',
+  submitButtonSelector: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputErrorClass: 'popup__input_type_error',
+}
+
+const profileFormValidator = new FormValidator(config, formProfile);
+
+const cardFormValidator = new FormValidator(config, formTypeCard);
+
+
+profileFormValidator.enableValidation();
+cardFormValidator.enableValidation();
+
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
@@ -153,7 +171,7 @@ popupCloseButton.addEventListener('click', function(){
   closePopup(blockPopup);
   const inputElements = blockPopup.querySelectorAll('.popup__form-input'); // Очистка ошибок
   inputElements.forEach((inputElement) =>{
-    hideInputError(config, blockPopup, inputElement);
+    profileFormValidator.hideInputError(config, blockPopup, inputElement);
   })
 });
 
@@ -167,14 +185,14 @@ cardAddButton.addEventListener('click', function(){
   formTypeCard.reset();
   const inputList = Array.from(popupAddCard.querySelectorAll(config.inputSelector));
   const buttonElement = popupAddCard.querySelector(config.submitButtonSelector);
-  _toggleButtonState(config, inputList, buttonElement)
+  cardFormValidator.toggleButtonState(config, inputList, buttonElement)
 });
 
 popupCardCloseButton.addEventListener('click', function(){
   closePopup(popupAddCard);
   const inputElements = popupAddCard.querySelectorAll('.popup__form-input'); // Очистка ошибок
   inputElements.forEach((inputElement) =>{
-    hideInputError(config, popupAddCard, inputElement);
+    cardFormValidator.hideInputError(inputElement);
   })
   
 });
@@ -218,6 +236,7 @@ class Card {
 
   generateCard() {
     this.element = this.getTemplate();
+
     this._setEventListeners();
 
     this.element.querySelector('.element__name').textContent = this.name;
