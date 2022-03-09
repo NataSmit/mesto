@@ -3,13 +3,13 @@ import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrappe
 
 export class Card {
   constructor(data, cardSelector) {
-    this.name = data.name;
-    this.link = data.link;
-    this.alt = data.name;
+    this._name = data.name;
+    this._link = data.link;
+    this._alt = data.name;
     this._cardSelector = cardSelector;
   }
 
-  getTemplate() {
+  _getTemplate() {
     const cardElement = document
     .querySelector(this._cardSelector)
     .content
@@ -19,23 +19,23 @@ export class Card {
   }
 
   generateCard() {
-    this.element = this.getTemplate();
+    this._element = this._getTemplate();
 
     this._setEventListeners();
 
-    this.element.querySelector('.element__name').textContent = this.name;
-    this.element.querySelector('.element__photo-img').src = this.link;
-    this.element.querySelector('.element__photo-img').alt = this.alt;
+    this._element.querySelector('.element__name').textContent = this._name;
+    this._element.querySelector('.element__photo-img').src = this._link;
+    this._element.querySelector('.element__photo-img').alt = this._alt;
     
-    return this.element;
+    return this._element;
   }
 
  
   _setEventListeners() {
     
-    this.element.querySelector('.element__icon').addEventListener('click', this._setLike);
-    this.element.querySelector('.element__delete-button').addEventListener('click', this._deliteCard);
-    this.element.querySelector('.element__photo-img').addEventListener('click', this._openCardFullScreen);
+    this._element.querySelector('.element__icon').addEventListener('click', this._setLike);
+    this._element.querySelector('.element__delete-button').addEventListener('click', this._deliteCard);
+    this._element.querySelector('.element__photo-img').addEventListener('click', this._openCardFullScreen);
  }
  
  _setLike (event) {

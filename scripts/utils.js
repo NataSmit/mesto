@@ -6,6 +6,12 @@ export function openPopup(popup) {
   wrapper.addEventListener('keydown', closePopupOnEsc);
 } 
 
+export function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  popup.removeEventListener('click', closePopupOnOverlay);
+  wrapper.removeEventListener('keydown', closePopupOnEsc);
+} 
+
 export function closePopupOnOverlay(evt) {                                
   if (evt.target === evt.currentTarget) {
     closePopup(evt.target);
@@ -18,3 +24,4 @@ export function closePopupOnEsc (evt) {
     closePopup(popupActive);
   }
 }
+

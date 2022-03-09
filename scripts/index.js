@@ -1,6 +1,6 @@
 import { FormValidator } from './formValidator.js';
 import { Card } from './card.js';
-import {openPopup, closePopupOnOverlay, closePopupOnEsc } from './utils.js';
+import {openPopup, closePopupOnOverlay, closePopupOnEsc, closePopup } from './utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from './constants.js';
 
 const initialCards = [
@@ -73,13 +73,6 @@ const cardFormValidator = new FormValidator(config, formTypeCard);
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
-
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  popup.removeEventListener('click', closePopupOnOverlay);
-  wrapper.removeEventListener('keydown', closePopupOnEsc);
-} 
 
 
 function submitProfileForm (evt) {             //Редактирование данных профайла
