@@ -2,11 +2,12 @@ import {openPopup, closePopupOnOverlay, closePopupOnEsc } from './utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from './constants.js';
 
 export class Card {
-  constructor(data, cardSelector) {
+  constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
     this._cardSelector = cardSelector;
+    this._handleCardClick = handleCardClick;
   }
 
   _getTemplate() {
@@ -35,7 +36,9 @@ export class Card {
     
     this._element.querySelector('.element__icon').addEventListener('click', this._setLike);
     this._element.querySelector('.element__delete-button').addEventListener('click', this._deliteCard);
-    this._element.querySelector('.element__photo-img').addEventListener('click', this._openCardFullScreen);
+    this._element.querySelector('.element__photo-img').addEventListener('click', () => {
+      this._handleCardClick(this._name, this._link);
+    });
  }
  
  _setLike (event) {
@@ -46,10 +49,5 @@ export class Card {
     event.target.closest('.element').remove();
   };
 
-  _openCardFullScreen (event) {
-    openPopup(popupViewImage);
-    popupViewImagePhoto.src = event.target.src;
-    popupViewImagePhotoSubtitle.textContent = event.target.alt;
-    popupViewImagePhoto.alt = event.target.alt;
-  }
+
 }

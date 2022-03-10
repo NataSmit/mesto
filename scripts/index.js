@@ -1,5 +1,5 @@
-import { FormValidator } from './formValidator.js';
-import { Card } from './card.js';
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
 import {openPopup, closePopupOnOverlay, closePopupOnEsc, closePopup } from './utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from './constants.js';
 
@@ -73,6 +73,13 @@ const cardFormValidator = new FormValidator(config, formTypeCard);
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+
+function handleCardClick(name, link) {
+  popupViewImagePhoto.src = link;
+  popupViewImagePhotoSubtitle.textContent = name;
+  popupViewImagePhoto.alt = name;
+  openPopup(popupViewImage);
+}
 
 
 function submitProfileForm (evt) {             //Редактирование данных профайла
