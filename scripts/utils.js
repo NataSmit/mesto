@@ -6,6 +6,7 @@ export function openPopup(popup) {
   wrapper.addEventListener('keydown', closePopupOnEsc);
 } 
 
+
 export function closePopup(popup) {
   popup.classList.remove('popup_opened');
   popup.removeEventListener('click', closePopupOnOverlay);

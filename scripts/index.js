@@ -1,5 +1,5 @@
-import { FormValidator } from './FormValidator.js';
-import { Card } from './Card.js';
+import { FormValidator } from './FormValidator123.js';
+import { Card } from './Card123.js';
 import {openPopup, closePopupOnOverlay, closePopupOnEsc, closePopup } from './utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from './constants.js';
 
@@ -57,8 +57,8 @@ const popupCardCloseButton = document.querySelector('.popup__close-button_type_c
 const popupCardNameInput = document.querySelector('.popup__form-input_type_card-name');
 const popupCardLinkInput = document.querySelector('.popup__form-input_type_card-link');
 const popupViewImageCloseButton = document.querySelector('.popup-view-image__close-button');
-const popups = Array.from(document.querySelectorAll('.popup'));
 const formTypeCard = document.querySelector('.popup__form_tipe_card');
+const popups = Array.from(document.querySelectorAll('.popup'));
 
 const config = {
   formSelector: '.popup__form',
@@ -73,6 +73,7 @@ const cardFormValidator = new FormValidator(config, formTypeCard);
 
 profileFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+
 
 function handleCardClick(name, link) {
   popupViewImagePhoto.src = link;
