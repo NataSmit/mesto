@@ -19,8 +19,8 @@ export function closePopupOnOverlay(evt) {
 }
 
 export function closePopupOnEsc (evt) {                                  
-  const popupActive = document.querySelector('.popup_opened');
   if (evt.key === 'Escape') {
+    const popupActive = document.querySelector('.popup_opened');
     closePopup(popupActive);
   }
 }

@@ -91,6 +91,11 @@ function submitProfileForm (evt) {             //Редактирование д
   closePopup(blockPopup);
 }
 
+function createCard(item) {
+  const newUserCard = new Card(item, '.card-template', handleCardClick);
+  const card = newUserCard.generateCard();
+  return card
+}
 
 function addCard (evt) {
   evt.preventDefault();
@@ -98,9 +103,8 @@ function addCard (evt) {
     name: popupCardNameInput.value,
     link: popupCardLinkInput.value,
   };
-  const newUserCard = new Card(newObj, '.card-template');
-  const card = newUserCard.generateCard();
-  renderCard(card, sectionElements);
+  const newCard = createCard(newObj)
+  renderCard(newCard, sectionElements);
   closePopup(popupAddCard);
 }
 
@@ -151,9 +155,7 @@ function renderCard(card, wrap) {                 //Добавление кар�
 
 function render() {                                    //Перебор массива карточек с созданием и добавлением на стр   
   initialCards.reverse().forEach((item) => {
-    const card = new Card(item, '.card-template');
-    const cardElement = card.generateCard();
-
+    const cardElement = createCard(item);
     renderCard(cardElement, sectionElements);
   }); 
 }
