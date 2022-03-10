@@ -1,5 +1,5 @@
-import { FormValidator } from './FormValidator123.js';
-import { Card } from './Card123.js';
+import { FormValidator } from './FormValidator.js';
+import { Card } from './Card.js';
 import {openPopup, closePopupOnOverlay, closePopupOnEsc, closePopup } from './utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from './constants.js';
 
