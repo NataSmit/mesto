@@ -1,6 +1,6 @@
 import { FormValidator } from './FormValidator.js';
 import { Card } from './Card.js';
-import {openPopup, closePopupOnOverlay, closePopupOnEsc, closePopup } from './utils.js';
+import {openPopup, closePopupOnEsc, closePopup } from './utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from './constants.js';
 
 const initialCards = [
@@ -109,49 +109,40 @@ function addCard (evt) {
   closePopup(popupAddCard);
 }
 
+popups.forEach((popup) => {
+   popup.addEventListener('mousedown', (evt) => {
+    if (evt.target.classList.contains('popup_opened')) {                  // Закрытие по нажатию на overlay
+      closePopup(popup);
+    } 
+    if ((evt.target.classList.contains('popup__close-button')) ||         // Закрытие по нажатию на крестик
+    (evt.target.classList.contains('popup__close-icon' ))) {              
+    closePopup(popup); 
+    }
+  })
+})
+
 profileEditButton.addEventListener('click', function(){
   openPopup(blockPopup);
+  profileFormValidator.resetValidation();
   nameInput.value = profileName.textContent;
   jobInput.value = profileProfession.textContent;
 });
 
-popupCloseButton.addEventListener('click', function(){
-  closePopup(blockPopup);
-  const inputElements = blockPopup.querySelectorAll('.popup__form-input'); // Очистка ошибок
-  inputElements.forEach((inputElement) =>{
-    profileFormValidator.hideInputError(inputElement);
-  })
-});
 
 formProfile.addEventListener('submit', submitProfileForm); 
-
 
 popupAddCard.addEventListener('submit', addCard);
 
 cardAddButton.addEventListener('click', function(){
   openPopup(popupAddCard);
   formTypeCard.reset();
-  cardFormValidator.toggleButtonState()
-});
-
-popupCardCloseButton.addEventListener('click', function(){
-  closePopup(popupAddCard);
-  const inputElements = popupAddCard.querySelectorAll('.popup__form-input'); // Очистка ошибок
-  inputElements.forEach((inputElement) =>{
-    cardFormValidator.hideInputError(inputElement);
-  })
-  
-});
-
-popupViewImageCloseButton.addEventListener('click', function(){
-  closePopup(popupViewImage);
+  cardFormValidator.resetValidation()
 });
 
 
-function renderCard(card, wrap) {                 //Добавление карточки в контейнер
+function renderCard(card, wrap) {                     //Добавление карточки в контейнер
   wrap.prepend(card);
 } 
-
 
 
 function render() {                                    //Перебор массива карточек с созданием и добавлением на стр   
@@ -160,7 +151,6 @@ function render() {                                    //Перебор масс
     renderCard(cardElement, sectionElements);
   }); 
 }
-
 
 render();
 

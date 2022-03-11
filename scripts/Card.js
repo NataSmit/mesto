@@ -1,4 +1,4 @@
-import {openPopup, closePopupOnOverlay, closePopupOnEsc } from './utils.js';
+import {openPopup, closePopupOnEsc } from './utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from './constants.js';
 
 export class Card {
