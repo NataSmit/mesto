@@ -3,33 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
+  
   <title>Mesto</title>
 </head>
 <body class="wrapper">
   <div class="root">
     <header class="header">
-        <a href="#"><img class="header__logo" src="./images/logo.svg" alt="Логотип Место"></a>
+        <a href="#"><img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="Логотип Место"></a>
     </header>
 
     <main class="content">
       <section class="profile">
         <div class="profile__body">
           <div class="profile__avatar">
-            <img class="profile__avatar-img" src="./images/avatar.jpg" alt="Фото профайла">
+            <img class="profile__avatar-img" src="<%=require('./images/avatar.jpg')%>" alt="Фото профайла">
           </div>
           <div class="profile__details">
             <div class="profile__container">
               <h1 class="profile__name">Жак-Ив Кусто</h1>
               <button type="button" class="profile__edit-button" aria-label="Редактировать" >               
-                <img class="profile__button-item" src="./images/pen.svg" alt="Редактировать">             
+                <img class="profile__button-item" src="<%=require('./images/pen.svg')%>" alt="Редактировать">             
               </button>
             </div>
             <p class="profile__profession">Исследователь океана</p>
           </div>
         </div>       
         <button type="button" class="profile__add-button" aria-label="Добавить">
-          <img class="profile__add-image" src="./images/plus.svg" alt="Добавить">
+          <img class="profile__add-image" src="<%=require('./images/plus.svg')%>" alt="Добавить">
         </button>
       </section>
       <section class="elements">
@@ -46,15 +46,16 @@
       <h2 class="popup__title">Редактировать профиль</h2>
       <form class="popup__form popup__form_type_profile" action="/" name="popup-form-profile" novalidate>
         <input name="profile-name-input" class="popup__form-input popup__form-input_type_name" 
-        type="text"  value="" required minlength="2" maxlength="40" placeholder="Имя">
+        type="text"  value="" required minlength="2" maxlength="40" placeholder="Имя" id="name" >
         <span class="profile-name-input-error popup__input-error"></span>
         <input name="profile-activity-input" class="popup__form-input popup__form-input_type_activity" 
-        type="text" value="" required minlength="2" maxlength="200" placeholder="Профессиональная деятельность">
+        type="text" value="" required minlength="2" maxlength="200" placeholder="Профессиональная деятельность"
+        id="about" >
         <span class="profile-activity-input-error popup__input-error"></span>
         <button class="popup__submit-btn" type="submit">Сохранить</button>
       </form>
       <button type="button" class="popup__close-button" aria-label="Закрыть">
-        <img class="popup__close-icon" src="./images/Close-Icon.svg" alt="Закрыть">
+        <img class="popup__close-icon" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
       </button>
     </div>
   </div>
@@ -63,14 +64,16 @@
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
       <form class="popup__form popup__form_tipe_card" action="/" name="popup-form-add-card">
-        <input name="card-name-input" class="popup__form-input popup__form-input_type_card-name" type="text" placeholder="Название" value="" required minlength="2" maxlength="30">
+        <input name="card-name-input" class="popup__form-input popup__form-input_type_card-name" type="text" 
+        placeholder="Название" value="" required minlength="2" maxlength="30" id="name">
         <span class="card-name-input-error popup__input-error"></span>
-        <input name="card-link-input" class="popup__form-input popup__form-input_type_card-link" type="url" placeholder="Ссылка на картинку" value="" required>
+        <input name="card-link-input" class="popup__form-input popup__form-input_type_card-link" type="url" 
+        placeholder="Ссылка на картинку" value="" required id="link">
         <span class="card-link-input-error popup__input-error"></span>
         <button class="popup__submit-btn popup__submit-btn_type_card" type="submit">Создать</button>
       </form>
       <button type="button" class="popup__close-button popup__close-button_type_card " aria-label="Закрыть">
-        <img class="popup__close-icon" src="./images/Close-Icon.svg" alt="Закрыть">
+        <img class="popup__close-icon" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
       </button>
     </div>
   </div>
@@ -82,7 +85,7 @@
         <figcaption class="popup-view-image__subtitle"></figcaption>    
       </figure> 
       <button type="button" class="popup__close-button popup-view-image__close-button" aria-label="Закрыть">
-        <img class="popup__close-icon popup-view-image__close-icon" src="./images/Close-Icon.svg" alt="Закрыть">
+        <img class="popup__close-icon popup-view-image__close-icon" src="<%=require('./images/Close-Icon.svg')%>" alt="Закрыть">
       </button>
     </div>
   </div>
@@ -99,7 +102,7 @@
       <button class="element__delete-button" type="button" aria-label="Удалить"></button>
     </article>
   </template>
-<script type="module" src="./scripts/index.js"></script>
+
 
 </body>
 </html>

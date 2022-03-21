@@ -1,0 +1,39 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "**Сервис \"Mesto\"** - это проектная работа 4 спринта. Основополагающим компонентом сайта является диалоговое окно (*\"popup\"*) для редактирования данных пользователя. В данной работе не только оттачиваются навыки верстки, но также применяются на практике основы JavaScript:\r 1. Работа с различными типами данных\r 2. Рабрта с основными операторами, условиями, циклами, функциями; \r 3. Манипуляции с элементами веб-страницы и основными событиями в браузере.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack serve",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NataSmit/mesto.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NataSmit/mesto/issues"
+  },
+  "homepage": "https://github.com/NataSmit/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.17.8",
+    "@babel/preset-env": "^7.16.11",
+    "autoprefixer": "^10.4.4",
+    "babel-loader": "^8.2.3",
+    "clean-webpack-plugin": "^4.0.0",
+    "core-js": "^3.21.1",
+    "css-loader": "^6.7.1",
+    "cssnano": "^5.1.4",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.0",
+    "postcss": "^8.4.12",
+    "postcss-loader": "^6.2.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2",
+    "webpack-dev-server": "^4.7.4"
+  }
+}
