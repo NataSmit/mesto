@@ -24,19 +24,13 @@ function submitProfileForm (info) {             //Редактирование �
 }
 
 
-function submitCard() {
-  const newObj = {
-    name: popupCardNameInput.value,
-    link: popupCardLinkInput.value,
-  };
-  const newCard = createCard(newObj);
-  renderCard(newCard, sectionElements);
+function submitCard(obj) {
+  cardList.addItem(createCard(obj))
   cardPopup.close();
-  
 }
 
-function handleCardClick(evt) {
-  imagePopup.open(evt);
+function handleCardClick(name, link) {
+  imagePopup.open(name, link);
 }
 
 const profileFormValidator = new FormValidator(config, formProfile)
@@ -75,9 +69,8 @@ cardAddButton.addEventListener('click', function(){
 const cardList = new Section({
   items: initialCards,
   renderer: (cardItem) => {
-    const newUserCard = new Card(cardItem, '.card-template', handleCardClick);
-    const card = newUserCard.generateCard();
-    cardList.addItem(card);
+    const newUserCard = createCard(cardItem);
+    cardList.addItem(newUserCard);
   }
 },
  '.elements'

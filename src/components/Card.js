@@ -1,6 +1,3 @@
-//import {openPopup, closePopupOnEsc } from './utils.js';
-import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper} from '../utils/constants.js';
-
 export class Card {
   constructor(data, cardSelector, handleCardClick) {
     this._name = data.name;
@@ -36,7 +33,9 @@ export class Card {
     
     this._element.querySelector('.element__icon').addEventListener('click', this._setLike);
     this._element.querySelector('.element__delete-button').addEventListener('click', this._deliteCard);
-    this._element.querySelector('.element__photo-img').addEventListener('click', this._handleCardClick);
+    this._element.querySelector('.element__photo-img').addEventListener('click', () => { 
+      this._handleCardClick(this._name, this._link); 
+    }); 
  }
  
  _setLike (event) {
