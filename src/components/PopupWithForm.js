@@ -14,7 +14,7 @@ export class PopupWithForm extends Popup {
     this._formValues = {};                           // создаём пустой объект
 
     this._inputList.forEach(input => {              // добавляем в этот объект значения всех полей
-      this._formValues[input.id] = input.value;
+      this._formValues[input.name] = input.value;
     });
     
     return this._formValues;
@@ -25,8 +25,13 @@ export class PopupWithForm extends Popup {
     super.close();
   }
 
+  changeSubmitFormHandler(newSubmitFormHandler) {
+    this._submitForm = newSubmitFormHandler
+  }
+
   setEventListeners() {
     super.setEventListeners();
+   
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._submitForm(this._getInputValues());
