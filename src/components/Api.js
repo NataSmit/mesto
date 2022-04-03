@@ -53,8 +53,37 @@ class Api {
       .then((res) => res.ok ? res.json() : Promise.reject(res.status))
       .catch(console.log)
   }
+  
+  deleteLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: 'DELETE',
+      headers: this._headers
+    })
+      .then((res) => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)
+  }
+  
+  addLike(id) {
+    return fetch(`${this._baseUrl}/cards/${id}/likes`, {
+      method: 'PUT',
+      headers: this._headers
+    })
+      .then((res) => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)
+  }
 
-
+  updateAvatar(obj) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: 'PATCH',
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: obj.avatar
+      })
+    })
+      .then((res) => res.ok ? res.json() : Promise.reject(res.status))
+      .catch(console.log)
+      
+  }
 
 }
 

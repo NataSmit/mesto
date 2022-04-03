@@ -40,6 +40,8 @@ export const jobInput = document.querySelector('.popup__form-input_type_activity
 export const popupCardNameInput = document.querySelector('.popup__form-input_type_card-name');
 export const popupCardLinkInput = document.querySelector('.popup__form-input_type_card-link');
 export const sectionElements = document.querySelector('.elements');
+export const avatar = document.querySelector('.profile__avatar');
+export const avatarForm = document.querySelector('.popup__form_type_update-avatar')
 export const config = {
   formSelector: '.popup__form',
   inputSelector: '.popup__form-input',

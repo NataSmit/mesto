@@ -13,19 +13,6 @@
   margin: 0 0 3px 0;
 }
 
-.element__likes {
-  display: flex;
-  flex-direction: column;
-  margin: 0 5px 0 15px;
-}
-
-.element__like-counter {
-  font-size: 13px;
-  line-height: 16px;
-  text-align: center;
-  color: #000000;
-  max-width: 10px;
-}
 
 .element__icon:hover {
   cursor: pointer;

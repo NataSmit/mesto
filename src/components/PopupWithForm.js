@@ -25,6 +25,11 @@ export class PopupWithForm extends Popup {
     super.close();
   }
 
+  changeButtonText(newText) {
+    const submitButton = this._formElement.querySelector('.popup__submit-btn');
+    submitButton.textContent = newText;
+  }
+
   changeSubmitFormHandler(newSubmitFormHandler) {
     this._submitForm = newSubmitFormHandler
   }
