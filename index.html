@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mesto</title>
+<script defer src="indexMain.js"></script><link href="main.css" rel="stylesheet"></head>
+<body class="wrapper">
+  <div class="root">
+    <header class="header">
+        <a href="#"><img class="header__logo" src="bbe2a6eafac19c3d031c.svg" alt="Логотип Место"></a>
+    </header>
+
+    <main class="content">
+      <section class="profile">
+        <div class="profile__body">
+          <div class="profile__avatar">
+            <img class="profile__avatar-img" src="" alt="Фото профайла">
+          </div>
+          <div class="profile__details">
+            <div class="profile__container">
+              <h1 class="profile__name"></h1>
+              <button type="button" class="profile__edit-button" aria-label="Редактировать" >               
+                <img class="profile__button-item" src="6c7bf05444b9793fdf6e.svg" alt="Редактировать">             
+              </button>
+            </div>
+            <p class="profile__profession"></p>
+          </div>
+        </div>       
+        <button type="button" class="profile__add-button" aria-label="Добавить">
+          <img class="profile__add-image" src="bed8c136e13907f5eefb.svg" alt="Добавить">
+        </button>
+      </section>
+      <section class="elements">
+      </section>
+    </main>
+
+    <footer class="footer root__footer">
+      <p  class="footer__copyright">&copy;2020 Mesto Russia</p>
+    </footer>
+  </div>
+
+  <div class="popup popup_type_profile">
+    <div class="popup__container">
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form popup__form_type_profile" action="/" name="popup-form-profile" novalidate>
+        <input id="profile-name-input" class="popup__form-input popup__form-input_type_name" 
+        type="text"  value="" required minlength="2" maxlength="40" placeholder="Имя" name="name" >
+        <span class="profile-name-input-error popup__input-error"></span>
+        <input id="profile-activity-input" class="popup__form-input popup__form-input_type_activity" 
+        type="text" value="" required minlength="2" maxlength="200" placeholder="Профессиональная деятельность"
+        name="about" >
+        <span class="profile-activity-input-error popup__input-error"></span>
+        <button class="popup__submit-btn" type="submit">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button" aria-label="Закрыть">
+        <img class="popup__close-icon" src="2ceb783afbab75916ddc.svg" alt="Закрыть">
+      </button>
+    </div>
+  </div>
+
+  <div class="popup popup_tipe_card ">
+    <div class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <form class="popup__form popup__form_tipe_card" action="/" name="popup-form-add-card">
+        <input id="card-name-input" class="popup__form-input popup__form-input_type_card-name" type="text" 
+        placeholder="Название" value="" required minlength="2" maxlength="30" name="name">
+        <span class="card-name-input-error popup__input-error"></span>
+        <input id="card-link-input" class="popup__form-input popup__form-input_type_card-link" type="url" 
+        placeholder="Ссылка на картинку" value="" required name="link">
+        <span class="card-link-input-error popup__input-error"></span>
+        <button class="popup__submit-btn popup__submit-btn_type_card" type="submit">Создать</button>
+      </form>
+      <button type="button" class="popup__close-button popup__close-button_type_card " aria-label="Закрыть">
+        <img class="popup__close-icon" src="2ceb783afbab75916ddc.svg" alt="Закрыть">
+      </button>
+    </div>
+  </div>
+
+  <div class="popup popup-view-image">
+    <div class="popup-view-image__container">
+      <figure class="popup-view-image__figure">
+        <img class="popup-view-image__photo-item" src="#" alt="#">
+        <figcaption class="popup-view-image__subtitle"></figcaption>    
+      </figure> 
+      <button type="button" class="popup__close-button popup-view-image__close-button" aria-label="Закрыть">
+        <img class="popup__close-icon popup-view-image__close-icon" src="2ceb783afbab75916ddc.svg" alt="Закрыть">
+      </button>
+    </div>
+  </div>
+
+  <div class="popup popup_tipe_delete">
+    <div class="popup__container">
+      <h2 class="popup__title popup__title_type_delete">Вы уверены?</h2>
+      <form class="popup__form popup__form_tipe_delete" action="/" name="popup-form-delete-card">
+        <button class="popup__submit-btn popup__confirm-delete-btn">Да</button>
+      </form>
+      <button type="button" class="popup__close-button popup__close-button_type_delete " aria-label="Закрыть">
+        <img class="popup__close-icon" src="2ceb783afbab75916ddc.svg" alt="Закрыть">
+      </button>
+    </div>
+  </div>
+
+  <div class="popup popup_type_update-avatar">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <form class="popup__form popup__form_type_update-avatar" action="/" name="popup-form-update-avatar">
+        <input name="avatar" class="popup__form-input popup__form-input_type_update-avatar" type="url" 
+        placeholder="https://somewebsite.com/someimage.jpg" value="" required id="avatar-link-input">
+        <span class="avatar-link-input-error popup__input-error"></span>
+        <button class="popup__submit-btn popup__submit-btn_type_update-avatar" type="submit">Сохранить</button>
+      </form>
+      <button type="button" class="popup__close-button popup__close-button_type_update-avatar" aria-label="Закрыть">
+        <img class="popup__close-icon" src="2ceb783afbab75916ddc.svg" alt="Закрыть">
+      </button>
+    </div>
+  </div>
+
+  <template class="card-template">
+    <article class="elements__card element">
+      <div class="element__photo">
+        <img class="element__photo-img" src="#" alt="#">
+      </div>
+      <div class="element__subtitle">
+        <h2 class="element__name"></h2>
+        <div class="element__likes">
+          <button class="element__icon" type="button" aria-label="Нравится"></button>
+          <span class="element__like-counter"></span>
+        </div>
+      </div>
+      <button class="element__delete-button" type="button" aria-label="Удалить"></button>
+    </article>
+  </template>
+
+
+</body>
+</html>
