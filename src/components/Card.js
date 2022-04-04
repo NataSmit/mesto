@@ -1,10 +1,9 @@
 export class Card {
-  constructor(data, userID, cardSelector, handleCardClick, handleDeleteClick, handleLikeClick) {
+  constructor(data, userID, cardSelector, handleCardClick, {handleDeleteClick, handleLikeClick}) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
     this._likes = data.likes;
-    console.log('this._likes', this._likes)
     this._id = data._id;
     this._userID = userID;
     this._ownerID = data.owner._id
@@ -87,11 +86,9 @@ export class Card {
  }
  
 
-
   deliteCard () {
     this._element.remove();
     this._element = null;
   };
-
 
 }

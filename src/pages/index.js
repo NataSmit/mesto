@@ -13,7 +13,7 @@ import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrappe
 
 import './index.css';
 
-let userID
+let userID;
 
 
 api.getUserData()
@@ -35,18 +35,18 @@ api.getInitialCards(userID)
   })
 
 function createCard(item, userID) {
-  const newUserCard = new Card(item, userID, '.card-template', handleCardClick, 
-  (id)=> {
-  confirmDeletePopup.open();
-  confirmDeletePopup.changeSubmitFormHandler(() => {
-    api.deleteCard(id)
+  const newUserCard = new Card(item, userID, '.card-template', handleCardClick, {handleDeleteClick:
+   (id)=> {
+   confirmDeletePopup.open();
+   confirmDeletePopup.changeSubmitFormHandler(() => {
+     api.deleteCard(id)
       .then(res => {
         newUserCard.deliteCard();
         confirmDeletePopup.close();
       })
-  })
-  }, 
-  (id) => {
+   })
+   }, handleLikeClick:
+   (id) => {
     if(newUserCard.isLiked()) {
       api.deleteLike(id)
         .then(res => {
@@ -58,27 +58,25 @@ function createCard(item, userID) {
         newUserCard.setLikes(res.likes)
       })
     }
-  }
-);
-  
-  const card = newUserCard.generateCard();
- 
-  return card 
+   }
+ }
+ );
 
+  const card = newUserCard.generateCard();
+  return card 
 }
 
 function submitProfileForm (info) {  
-  profilePopup.changeButtonText('Сохранение...')
+  profilePopup.changeButtonText('Сохранение...');
   api.editProfile(info)  
     .then(res =>{
-      userInfo.setUserInfo(info);        //Редактирование данных профайла
+      userInfo.setUserInfo(info);              //Редактирование данных профайла
     })       
                      
   profilePopup.close()
 }
 
 function submitAvatarForm(obj) {
-  console.log(obj)
   popupUpdateAvatar.changeButtonText('Сохранение...');
   api.updateAvatar(obj)  
     .then(res =>{
@@ -91,40 +89,19 @@ function handleCardClick(name, link) {
   imagePopup.open(name, link);
 }
 
-function handleLikeClick(id) {
-  api.addLike(id)
-    .then(res => {
-      console.log(res)
-    })
-}
-
-//function openDeleteCardPopup(id) {
-//  confirmDeletePopup.open();
-//  confirmDeletePopup.changeSubmitFormHandler(() => {
-//    api.deleteCard(id)
-//      .then(res => {
-//        
-//        confirmDeletePopup.close();
-//      })
-//  })
-//  
-//}
 
 function submitCard(obj) {
   cardPopup.changeButtonText('Сохранение...');
   api.addCard(obj)
     .then(res => {
-      //cardList.addItem(createCard(obj))
-      const test = createCard(obj);
-      console.log('test', test);
-      cardList.addItem(test)
+      cardList.addItem(createCard(obj));
     })
   
   cardPopup.close();
 }
 
 
-const profileFormValidator = new FormValidator(config, formProfile)
+const profileFormValidator = new FormValidator(config, formProfile);
 const cardFormValidator = new FormValidator(config, formTypeCard);
 const avatarValidator = new FormValidator(config, avatarForm);
 
@@ -175,7 +152,7 @@ avatar.addEventListener('click', function(){
 
 
 const cardList = new Section({
-  items: /*initialCards*/[],
+  items: [],
   renderer: (cardItem) => {
     const newUserCard = createCard(cardItem);
     cardList.addItem(newUserCard);
