@@ -27,7 +27,7 @@ api.getUserData()
 api.getInitialCards(userID)
   .then(serverCards => {
     serverCards.forEach((data) => {
-      console.log('data', data)
+      
       const card = createCard(data, userID)
       cardList.addItem(card)
     })
@@ -55,8 +55,10 @@ function createCard(item, userID) {
     } else {
       api.addLike(id) 
       .then(res => {
+        console.log('res', res)
         newUserCard.setLikes(res.likes)
       })
+      
     }
    }
  }
@@ -71,7 +73,10 @@ function submitProfileForm (info) {
   api.editProfile(info)  
     .then(res =>{
       userInfo.setUserInfo(info);              //Редактирование данных профайла
-    })       
+    })    
+    .finally(() => {
+      profilePopup.changeButtonText('Сохранить')
+    })         
                      
   profilePopup.close()
 }
@@ -81,7 +86,10 @@ function submitAvatarForm(obj) {
   api.updateAvatar(obj)  
     .then(res =>{
       userInfo.setAvatar(obj);        
-    })       
+    }) 
+    .finally(() => {
+      popupUpdateAvatar.changeButtonText('Сохранить')
+    })      
   popupUpdateAvatar.close();
 }
 
@@ -96,7 +104,12 @@ function submitCard(obj) {
     .then(res => {
       cardList.addItem(createCard(obj));
     })
-  
+    .finally(() => {
+      cardPopup.changeButtonText('Создать')
+    })
+  obj.owner = {};
+  obj.owner._id = userID;
+  obj.likes = [];
   cardPopup.close();
 }
 
