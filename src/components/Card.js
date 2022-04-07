@@ -5,12 +5,14 @@ export class Card {
     this._alt = data.name;
     this._likes = data.likes;
     this._id = data._id;
+    console.log('this._id', this._id)
     this._userID = userID;
     this._ownerID = data.owner._id;
     this._cardSelector = cardSelector;
     this._handleCardClick = handleCardClick;
     this._handleDeleteClick = handleDeleteClick;
-    this._handleLikeClick = handleLikeClick
+    this._handleLikeClick = handleLikeClick;
+    
   }
 
   _getTemplate() {
@@ -27,7 +29,7 @@ export class Card {
     this._element = this._getTemplate();
     this._likeButton = this._element.querySelector('.element__icon');
     this._likeCounter = this._element.querySelector('.element__like-counter');
-
+    
   
     this._setEventListeners();
     this._getInitialLikes()
@@ -35,6 +37,7 @@ export class Card {
     this._element.querySelector('.element__name').textContent = this._name;
     this._element.querySelector('.element__photo-img').src = this._link;
     this._element.querySelector('.element__photo-img').alt = this._alt;
+    
     //this._likeCounter.textContent = this._likes.length;
 
     if(this._userID !== this._ownerID) {
@@ -86,7 +89,7 @@ export class Card {
  
   _setEventListeners() {
     this._element.querySelector('.element__icon').addEventListener('click', () => { 
-      this._handleLikeClick(this._id);
+      this._handleLikeClick(this._element, this._id);
     });
     this._element.querySelector('.element__delete-button').addEventListener('click', () => {
       this._handleDeleteClick(this._id);

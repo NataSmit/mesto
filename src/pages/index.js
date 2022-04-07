@@ -5,6 +5,7 @@ import {Section} from '../components/Section.js';
 import Popup from '../components/Popup.js';
 import {PopupWithForm} from '../components/PopupWithForm.js';
 import {PopupWithImage} from '../components/PopupWithImage.js';
+import {PopupWithConfirmation} from '../components/PopupWithConfirmation.js';
 import UserInfo from '../components/UserInfo.js';
 import {renderCard} from '../utils/utils.js';
 import {popupViewImage, popupViewImagePhoto, popupViewImagePhotoSubtitle, wrapper, initialCards, 
@@ -15,24 +16,18 @@ import './index.css';
 
 let userID;
 
+Promise.all([api.getUserData(),api.getInitialCards(userID)])
+  .then(([userData, serverCards]) => {              
+    userID = userData._id;
+    userInfo.setUserInfo(userData);
+    userInfo.setAvatar(userData);
 
-api.getUserData()
- .then(res => {
-  userInfo.setUserInfo(res);
-  userInfo.setAvatar(res);
-  userID = res._id
-  
- })
-
-api.getInitialCards(userID)
-  .then(serverCards => {
     serverCards.forEach((data) => {
-      
-      const card = createCard(data, userID)
-      cardList.addItem(card)
-    })
-    
+      const card = createCard(data, userID);
+      cardList.addItem(card);
+    }) 
   })
+  .catch((err) => console.log(err))
 
 function createCard(item, userID) {
   const newUserCard = new Card(item, userID, '.card-template', handleCardClick, {handleDeleteClick:
@@ -44,26 +39,26 @@ function createCard(item, userID) {
         newUserCard.deliteCard();
         confirmDeletePopup.close();
       })
+      .catch((err) => console.log(err))
    })
    }, handleLikeClick:
-   (id) => {
+   (cardTest, id) => {
     if(newUserCard.isLiked()) {
       api.deleteLike(id)
         .then(res => {
           newUserCard.setLikes(res.likes)
-        })
+        }) 
+        .catch((err) => console.log(err)) 
     } else {
       api.addLike(id) 
       .then(res => {
-        console.log('res', res)
         newUserCard.setLikes(res.likes)
       })
-      
+      .catch((err) => console.log(err))
     }
    }
  }
  );
-
   const card = newUserCard.generateCard();
   return card 
 }
@@ -73,7 +68,8 @@ function submitProfileForm (info) {
   api.editProfile(info)  
     .then(res =>{
       userInfo.setUserInfo(info);              //Редактирование данных профайла
-    })    
+    })  
+    .catch((err) => console.log(err))  
     .finally(() => {
       profilePopup.changeButtonText('Сохранить')
     })         
@@ -87,6 +83,7 @@ function submitAvatarForm(obj) {
     .then(res =>{
       userInfo.setAvatar(obj);        
     }) 
+    .catch((err) => console.log(err))
     .finally(() => {
       popupUpdateAvatar.changeButtonText('Сохранить')
     })      
@@ -102,8 +99,9 @@ function submitCard(obj) {
   cardPopup.changeButtonText('Сохранение...');
   api.addCard(obj)
     .then(res => {
-      cardList.addItem(createCard(obj));
+      cardList.addItem(createCard(res, userID));
     })
+    .catch((err) => console.log(err))
     .finally(() => {
       cardPopup.changeButtonText('Создать')
     })
@@ -136,7 +134,7 @@ cardPopup.setEventListeners()
 const imagePopup = new PopupWithImage('.popup-view-image')
 imagePopup.setEventListeners()
 
-const confirmDeletePopup = new PopupWithForm('.popup_tipe_delete')
+const confirmDeletePopup = new PopupWithConfirmation('.popup_tipe_delete')
 confirmDeletePopup.setEventListeners()
 
 const popupUpdateAvatar = new PopupWithForm('.popup_type_update-avatar', submitAvatarForm)
