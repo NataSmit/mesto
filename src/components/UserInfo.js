@@ -9,17 +9,14 @@ export default class UserInfo {
   getUserInfo() {                       //возвращает объект с данными пользователя
     return {
       name: this._userName.textContent,
-      about: this._userProfession.textContent,
-      avatar: this._userAvatar.src
+      about: this._userProfession.textContent
     }
   }
 
   setUserInfo(info) {                       //принимает новые данные пользователя и добавляет их на страницу              
     this._userName.textContent = info.name;
     this._userProfession.textContent = info.about;
-  }
-  
-  setAvatar(info) {
     this._userAvatar.src = info.avatar;
   }
+  
 }

@@ -1,15 +1,13 @@
 export class Section {
-  constructor({ items, renderer }, containerSelector) {
-    this._initialArray = items;
-    this._renderer = renderer;                //отвечает за создание и отрисовку данных на странице
-    
+  constructor({ renderer }, containerSelector) {
+    this._renderer = renderer;                         //отвечает за создание и отрисовку данных на странице
     this._container = document.querySelector(containerSelector);
     
   }
 
-  renderItems() {                    
-    this._initialArray.reverse().forEach((item) => {
-      this._renderer(item);
+  renderItems(servercards, userID) {                    
+    servercards.reverse().forEach((item) => {
+        this._renderer(item, userID);
     })
   }
 
